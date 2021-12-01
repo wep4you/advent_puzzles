@@ -13,7 +13,9 @@ Internal Leaderboard
 
     https://adventofcode.com/2021/leaderboard/private/view/196004
 
-## Advent
+## Challanges
+
+Will be published at least 1 day after the day the puzzle was activated
 
 * [Day 01](./day_01/Readme.md) - Result: **
 * [Day 02](./day_02/Readme.md) - Result: NA
