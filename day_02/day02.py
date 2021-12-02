@@ -65,8 +65,8 @@ def main():
   answer1 = riddle.part1()
   answer2 = riddle.part2()
 
-  print(f'Answer Day 02 Part 1: {answer1}')
-  print(f'Answer Day 02 Part 2: {answer2}')
+  print(f'Day 02-1: {answer1}')
+  print(f'Day 02-2: {answer2}')
 
 if __name__ == "__main__":
     main()
