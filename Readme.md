@@ -18,7 +18,7 @@ Internal Leaderboard
 Will be published at least 1 day after the day the puzzle was activated
 
 * [Day 01](./day_01/Readme.md) - Result: **
-* [Day 02](./day_02/Readme.md) - Result: NA
+* [Day 02](./day_02/Readme.md) - Result: **
 * [Day 03](./day_03/Readme.md) - Result: NA
 * [Day 04](./day_04/Readme.md) - Result: NA
 * [Day 05](./day_05/Readme.md) - Result: NA
