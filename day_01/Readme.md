@@ -12,7 +12,7 @@ How many measurements are larger than the previous measurement?
 
 ### Answer
 
-Check Python script: [count-measurements.py](./count-measurements.py)
+    Check Python script: [day01.py](./day01.py)
 
 ---
 
@@ -28,5 +28,4 @@ Consider sums of a three-measurement sliding window. How many sums are larger th
 
 ### Answer
 
-Check Python script: [count-measurements-sums.py](./count-measurements-sums.py)
-
+    Check Python script: [day01.py](./day01.py)

@@ -6,6 +6,9 @@ Just for fun: Advent challenges and a possibility to learn a programming languag
 
     https://adventofcode.com
 
+## Run all programs
+
+    python3 AdventOfCode2021.py
 
 ## Private Leaderboard
 
@@ -13,7 +16,8 @@ Internal Leaderboard
 
     https://adventofcode.com/2021/leaderboard/private/view/196004
 
-## Challanges
+
+## Challenges
 
 Will be published at least 1 day after the day the puzzle was activated
 
