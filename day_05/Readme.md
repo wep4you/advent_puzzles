@@ -36,7 +36,10 @@ Check Python script: [day05.py](./day05.py)
 
 ## Notes
 
-Already inmplemented diagonal lines for Part1, so read the answers and hints carefully.
+Already inmplemented diagonal lines for Part1, so note for myself "read the questions and hints carefully".
 
 Get some major help from my little daughter, she draws the sample on a squared paper,
 and joined me while I implemented the different steps, maybee a little programmer for the future ;-)
+
+Also decided here to add the example input for verifiying the solution on a smaller code sample,
+and easier compare the results.
