@@ -29,3 +29,10 @@ Using this new interpretation of the commands, calculate the horizontal position
 ### Answer
 
 Check Python script: [day02.py](./day02.py)
+
+---
+
+## Notes
+
+Refactored the structure from simple script to a class structure,
+and afterwards also added a main function at day-3

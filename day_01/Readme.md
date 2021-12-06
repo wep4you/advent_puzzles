@@ -29,3 +29,9 @@ Consider sums of a three-measurement sliding window. How many sums are larger th
 ### Answer
 
     Check Python script: [day01.py](./day01.py)
+
+---
+
+## Notes
+
+Started as simple Python script and afterwards refacored it on day 3.

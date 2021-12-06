@@ -29,3 +29,11 @@ Figure out which board will win last. Once it wins, what would its final score b
 ### Answer
 
 Check Python script: [day04.py](./day04.py)
+
+---
+
+## Notes
+
+In this example I used classes and functions, so learned more about this in python.
+Mainly used simple arrays, thought about optimization with dictionaries, will be a goal
+in the next samples.

@@ -13,16 +13,24 @@ class Day07:
   def part2(self):
     return ''
 
-def main():
-  logging.basicConfig( level=logging.WARN)
+def main(DEV=False):
+  if (DEV):
+    logging.basicConfig( level=logging.DEBUG)
+    sample = Day07('example.txt')
 
-  riddle = Day07('input.txt')
+    logging.info(f'EXAMPLE Day 07-1: {sample.part1()}')
+    logging.info(f'EXAMPLE Day 07-2: {sample.part2()}')
 
-  answer1 = riddle.part1()
-  answer2 = riddle.part2()
+  else:  
+    logging.basicConfig( level=logging.WARN)
 
-  print(f'Day 07-1: {answer1}')
-  print(f'Day 07-2: {answer2}')
+    riddle = Day07('input.txt')
+
+    answer1 = riddle.part1()
+    answer2 = riddle.part2()
+
+    print(f'Day 07-1: {answer1}')
+    print(f'Day 07-2: {answer2}')
 
 if __name__ == "__main__":
-    main()
+    main(True)    

@@ -29,3 +29,11 @@ What is the life support rating of the submarine? (Be sure to represent your ans
 ### Answer
 
 Check Python script: [day03.py](./day03.py)
+
+---
+
+## Notes
+
+Refactored the structure from simple script to Structure with Main Function, which doesnt exist in python,
+but implemented as in other languages for easier code reading. Also added classed and Debugging to the
+cde and added a Main python File for easy running the whole set of Tests and get all Solutions for every day.

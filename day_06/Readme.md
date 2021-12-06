@@ -34,4 +34,6 @@ Check Python script: [day06.py](./day06.py)
 
 ## Notes
 
-Nice example to optimize code execution from Part-1 to Part-2
+Nice example to optimize code execution from Part-1 to Part-2. Started in part one with simple arrays,
+this is ok, for some smaller iterations, but gets worse with higher iterations and high memory usage.
+So refactored code in Part-2 to dictionary and also changed code for Part-1.
