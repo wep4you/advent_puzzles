@@ -1,4 +1,4 @@
-# Day 6:
+# Day 6: Lanternfish
 
 ## Part 1
 
@@ -8,7 +8,7 @@ https://adventofcode.com/2021/day/6
 
 ### Question
 
-
+Find a way to simulate lanternfish. How many lanternfish would there be after 80 days?s
 
 ### Answer
 
@@ -24,7 +24,14 @@ https://adventofcode.com/2021/day/6#part2
 
 ### Question
 
+How many lanternfish would there be after 256 days?
 
 ### Answer
 
 Check Python script: [day06.py](./day06.py)
+
+---
+
+## Notes
+
+Nice example to optimize code execution from Part-1 to Part-2
