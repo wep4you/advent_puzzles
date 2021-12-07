@@ -18,12 +18,76 @@ class Day07:
   
   def parse(self, puzzle_input):
     """Parse input"""
+    ret = []
+    for value in puzzle_input.split(','):
+      ret.append(int(value))
+    return ret
 
   def part1(self, data):
     """Solve part 1"""
+    maxPos = 0
+    minPos = 1000000000
+    for pos in data:
+      if maxPos < pos:
+        maxPos = pos
+      if minPos > pos:
+        minPos = pos
+
+    leastFuel = 1000000000
+    for i in range(minPos, maxPos):
+      fuel = 0
+      for pos in data:
+        tmp = pos - i
+        if (tmp<0):
+          tmp *= -1
+        fuel += tmp
+        
+        if (fuel > leastFuel):
+          break
+
+      logging.debug(f'Pos {i}: Fuel: {fuel}')
+      if (fuel < leastFuel):
+          leastFuel = fuel
+
+    logging.info(f'leastFuel: {leastFuel}')
+
+    return leastFuel
+    
 
   def part2(self, data):
     """Solve part 2"""
+    maxPos = 0
+    minPos = 1000000000
+    for pos in data:
+      if maxPos < pos:
+        maxPos = pos
+      if minPos > pos:
+        minPos = pos
+
+    leastFuel = 1000000000
+    for i in range(minPos, maxPos):
+      fuel = 0
+      for pos in data:
+        distance = pos-i
+        if (distance<0):
+          distance *= -1
+
+        tmp = 0
+        for x in range(distance):
+          tmp += x + 1
+        
+        fuel += tmp
+
+        if (fuel > leastFuel):
+          break
+
+      logging.debug(f'Pos {i}: Fuel: {fuel}')
+      if (fuel < leastFuel):
+          leastFuel = fuel
+
+    logging.info(f'leastFuel: {leastFuel}')
+
+    return leastFuel
 
   def solve(self, puzzle_input=None):
     """Solve the puzzle for the given input"""

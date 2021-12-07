@@ -59,12 +59,14 @@ def main():
   print(f'Day 07-2: {answer_07[1]}')
 
   riddle_08 = day08.Day08('./day_08/input.txt')
-  print(f'Day 08-1: {riddle_08.part1()}')
-  print(f'Day 08-2: {riddle_08.part2()}')
+  answer_08 = riddle_08.solve()
+  print(f'Day 08-1: {answer_08[0]}')
+  print(f'Day 08-2: {answer_08[1]}')
 
   riddle_09 = day09.Day09('./day_09/input.txt')
-  print(f'Day 09-1: {riddle_09.part1()}')
-  print(f'Day 09-2: {riddle_09.part2()}')
+  answer_09 = riddle_09.solve()
+  print(f'Day 09-1: {answer_09[0]}')
+  print(f'Day 09-2: {answer_09[1]}')
 
   riddle_10 = day10.Day10('./day_10/input.txt')
   print(f'Day 10-1: {riddle_10.part1()}')

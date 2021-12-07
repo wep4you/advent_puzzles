@@ -1,27 +1,29 @@
-# test_day07.py
+# test_day09.py
 
 import pathlib
 import pytest
-import day07 as day
+import day09 as day
 
 PUZZLE_DIR = pathlib.Path(__file__).parent
 
-riddle = day.Day07()
+riddle = day.Day09()
 
 @pytest.fixture
 def example():
     puzzle_input = (PUZZLE_DIR / "example.txt").read_text().strip()
     return riddle.parse(puzzle_input)
 
+@pytest.mark.skip(reason="Not implemented")
 def test_parse_example(example):
     """Test that input is parsed properly"""
-    assert example == [16,1,2,0,4,2,7,1,2,14]
+    assert example == ...
 
-pytest.mark.skip(reason="Not implemented")
+@pytest.mark.skip(reason="Not implemented")
 def test_part1_example1(example):
     """Test part 1 on example input"""
-    assert riddle.part1(example) == 37
+    assert riddle.part1(example) == ...
 
+@pytest.mark.skip(reason="Not implemented")
 def test_part2_example1(example):
     """Test part 2 on example input"""
-    assert riddle.part2(example) == 168
+    assert riddle.part2(example) == ...
