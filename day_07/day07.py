@@ -52,10 +52,8 @@ class Day07:
     logging.info(f'leastFuel: {leastFuel}')
 
     return leastFuel
-    
 
   def part2(self, data):
-    """Solve part 2"""
     maxPos = 0
     minPos = 1000000000
     for pos in data:
@@ -63,29 +61,22 @@ class Day07:
         maxPos = pos
       if minPos > pos:
         minPos = pos
-
     leastFuel = 1000000000
-    for i in range(minPos, maxPos):
+    for i in range(minPos, maxPos):    
       fuel = 0
       for pos in data:
-        distance = pos-i
-        if (distance<0):
-          distance *= -1
-
         tmp = 0
-        for x in range(distance):
-          tmp += x + 1
-        
-        fuel += tmp
-
+        if (pos > i):
+          tmp = (((pos-i) * ((pos-i) + 1))/2)
+        else:
+          tmp = (((i-pos) * ((i-pos) + 1))/2)
+        fuel += int(tmp)
         if (fuel > leastFuel):
           break
 
       logging.debug(f'Pos {i}: Fuel: {fuel}')
       if (fuel < leastFuel):
           leastFuel = fuel
-
-    logging.info(f'leastFuel: {leastFuel}')
 
     return leastFuel
 
@@ -99,7 +90,6 @@ class Day07:
     solution2 = self.part2(data)
 
     return solution1, solution2
-
 
 def main():
   logging.basicConfig(level=logging.INFO)

@@ -35,6 +35,30 @@ Check Python script: [day07.py](./day07.py)
 
 ## Notes
 
-Optimization for Part-2 needed, it works but isnt performant, so check better solution. With Unit Tests and
-check Test Cases against the examples, its much easier to focus on solution. The run with the given Input data,
-after green Unit Test is just an execution with the correct answer.
+With Unit Tests and check Test Cases against the examples, it's much easier to focus on solution. 
+
+Tried different Solutions for performance optimization on Part 2, with code samples within the
+Unit tests on the Real Data input and output of the processing time, to print the output start wit -s
+
+## Performance Outcomes
+
+Best performance with the right calculation and reduction of loops
+Get the outcomes in the Unit Tests with
+
+    pytest -s
+
+### Just with Loops and math
+
+19,55 sec: Easiest but slowest variant
+
+### Use Numpy
+
+10,74 sec: Better Performace sort input array, remove duplicates, use min and max from Numpy
+
+### Calculiaton
+
+00,11 sec: Best Performance, no need for nested loops, just calculate the fuel needs
+
+### Calculiaton and Numpy
+
+00,35 sec: Overhead for sorting and stripping duplicates are higher than the removed inner loop, so not so performanct
