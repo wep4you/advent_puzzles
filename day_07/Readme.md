@@ -49,16 +49,16 @@ Get the outcomes in the Unit Tests with
 
 ### Just with Loops and math
 
-19,55 sec: Easiest but slowest variant
+**19,55 sec**: Easiest but slowest variant
 
 ### Use Numpy
 
-10,74 sec: Better Performace sort input array, remove duplicates, use min and max from Numpy
+**10,74 sec**: Better Performace sort input array, remove duplicates, use min and max from Numpy
 
-### Calculiaton
+### Calculaton
 
-00,11 sec: Best Performance, no need for nested loops, just calculate the fuel needs
+**0,11 sec**: Best Performance, no need for nested loops, just calculate the fuel needs
 
-### Calculiaton and Numpy
+### Calculaton and Numpy
 
-00,35 sec: Overhead for sorting and stripping duplicates are higher than the removed inner loop, so not so performanct
+**0,35 sec**: Overhead for sorting and stripping duplicates are higher than the removed inner loop, so not so performanct
