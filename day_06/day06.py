@@ -1,19 +1,36 @@
 import logging
+import pathlib
+import sys
 
 class Day06:
+  
+  puzzle_input = None
 
-  inputFishAges = {0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0}
+  def __init__(self, inputFile=None):
+    if (inputFile):
+      logging.info(f"{inputFile}:")
+      self.puzzle_input = pathlib.Path(inputFile).read_text().strip()
+      logging.debug(f'Puzzle Input: {self.puzzle_input}')
+    else:
+      print(f'Please add Name of the inputfile to the call')
+  
+  def parse(self, puzzle_input):
+    """Parse input"""
+    ret = []
+    for line in puzzle_input.split():
+      values = line.split(',')
+      for value in values:
+        ret.append(int(value))
+      logging.debug(ret)
+    return ret
 
-  def __init__(self, inputfile):
-    with open(inputfile, 'r') as f:
-      for line in f:
-        values = line.split()[0].split(',')
-        for value in values:
-          self.inputFishAges[int(value)] += 1
-        logging.debug(self.inputFishAges)
+  def part1(self, data, dayCount):
+    """Solve part 1"""
+    input = {0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0}
+    for i in range(len(data)):
+      input[data[i]] += 1
 
-  def part1(self, dayCount=80):
-    fishAges = self.inputFishAges
+    fishAges = input
     for i in range (dayCount):
       tmpfishAges = {0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0}
       for key in fishAges:
@@ -32,30 +49,33 @@ class Day06:
 
     return fishCount
 
+  def part2(self, data, dayCount):
+    """Solve part 2"""
+    return self.part1(data, dayCount)
 
-  def part2(self, dayCount=256):
-    return self.part1(dayCount)
+  def solve(self, puzzle_input=None):
+    """Solve the puzzle for the given input"""
+    if (puzzle_input is None):
+      puzzle_input = self.puzzle_input
+    data = self.parse(puzzle_input)
+    logging.debug(data)
+    solution1 = self.part1(data, 80)
+    solution2 = self.part2(data, 256)
+
+    return solution1, solution2
 
 
-def main(DEV=False):
-  if (DEV):
-    logging.basicConfig( level=logging.DEBUG)
-    sample = Day06('example.txt')
+def main():
+  logging.basicConfig(level=logging.DEBUG)
 
-    logging.info(f'EXAMPLE Day 06-1:  18 days: {sample.part1(18)}')
-    logging.info(f'EXAMPLE Day 06-1:  80 days: {sample.part1(80)}')
-    logging.info(f'EXAMPLE Day 06-2: 256 days: {sample.part2(256)}')
+  sample = Day06()
 
-  else:  
-    logging.basicConfig( level=logging.WARN)
-
-    riddle = Day06('input.txt')
-
-    answer1 = riddle.part1(80)
-    answer2 = riddle.part2(256)
-
-    print(f'Day 06-1: {answer1}')
-    print(f'Day 06-2: {answer2}')
+  for path in sys.argv[1:]:
+    logging.info(f"{path}:")
+    puzzle_input = pathlib.Path(path).read_text().strip()
+    logging.debug(f'Puzzle Input: {puzzle_input}')
+    solutions = sample.solve(puzzle_input)
+    print("\n".join(str(solution) for solution in solutions))
 
 if __name__ == "__main__":
-    main(False)
+    main()

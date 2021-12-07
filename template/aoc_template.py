@@ -4,7 +4,7 @@ import logging
 import pathlib
 import sys
 
-class Day07:
+class DayXY:
   
   puzzle_input = None
 
@@ -40,7 +40,7 @@ class Day07:
 def main():
   logging.basicConfig(level=logging.INFO)
 
-  sample = Day07()
+  sample = DayXY()
 
   for path in sys.argv[1:]:
     logging.info(f"{path}:")
@@ -51,3 +51,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
