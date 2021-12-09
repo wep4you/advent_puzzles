@@ -1,28 +1,53 @@
+# day.py
+
 import logging
+import pathlib
+import sys
 
 class Day22:
-  def __init__(self, inputfile):
-    with open(inputfile, 'r') as f:
-      for line in f:
-        values = line.split()
-        logging.debug(f'{values}')
+  
+  puzzle_input = None
 
-  def part1(self):
-      return ''
+  def __init__(self, inputFile=None):
+    if (inputFile):
+      logging.info(f"{inputFile}:")
+      self.puzzle_input = pathlib.Path(inputFile).read_text().strip()
+      logging.debug(f'Puzzle Input: {self.puzzle_input}')
+    else:
+      print(f'Please add Name of the inputfile to the call')
+  
+  def parse(self, puzzle_input):
+    """Parse input"""
 
-  def part2(self):
-    return ''
+  def part1(self, data):
+    """Solve part 1"""
+
+  def part2(self, data):
+    """Solve part 2"""
+
+  def solve(self, puzzle_input=None):
+    """Solve the puzzle for the given input"""
+    if (puzzle_input is None):
+      puzzle_input = self.puzzle_input
+    data = self.parse(puzzle_input)
+    logging.debug(data)
+    solution1 = self.part1(data)
+    solution2 = self.part2(data)
+
+    return solution1, solution2
+
 
 def main():
-  logging.basicConfig( level=logging.WARN)
+  logging.basicConfig(level=logging.INFO)
 
-  riddle = Day22('input.txt')
+  sample = Day22()
 
-  answer1 = riddle.part1()
-  answer2 = riddle.part2()
-
-  print(f'Day 22-1: {answer1}')
-  print(f'Day 22-2: {answer2}')
+  for path in sys.argv[1:]:
+    logging.info(f"{path}:")
+    puzzle_input = pathlib.Path(path).read_text().strip()
+    logging.debug(f'Puzzle Input: {puzzle_input}')
+    solutions = sample.solve(puzzle_input)
+    print("\n".join(str(solution) for solution in solutions))
 
 if __name__ == "__main__":
     main()
