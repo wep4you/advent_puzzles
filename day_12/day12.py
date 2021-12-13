@@ -49,7 +49,7 @@ class Day12:
 
 
   def findPath(self, inKey, data, aktPath, found, bOneSmallTwice=False):
-    ret = aktPath.copy()
+    ret = aktPath #.copy()
     logging.debug(f'findPath for inKey: {inKey} - aktPath: {aktPath} - found: {found}')
     for key in data[inKey]:
       logging.debug(f'{inKey} -> {key}')
@@ -59,7 +59,7 @@ class Day12:
         #input("check next iteration")
         if (key == 'end'):
           found.append(ret.copy())
-          logging.debug(f'paths: {len(found)}')
+          logging.debug(f'paths a: {len(found)}')
         else:
           ret = self.findPath(key, data, ret, found, bOneSmallTwice)
         ret.pop()
@@ -72,9 +72,9 @@ class Day12:
           #input("check next iteration")
           if (key == 'end'):
             found.append(ret.copy())
-            logging.info(f'paths: {len(found)}')
+            logging.debug(f'paths b: {len(found)}')
           else:
-            ret = self.findPath(key, data, ret, found)
+            ret = self.findPath(key, data, ret, found, False)
           ret.pop()
       else:
         logging.debug(f'{key}: already in Path')       
@@ -93,11 +93,9 @@ class Day12:
     paths = []
     
     """ NEED Performance refactoring, works correct but need hours ;( """
-    #self.findPath('start', data, ['start'], paths, True)
-    #logging.debug(f'visited {paths}')
-    #return len(paths)
-
-    return 99138
+    self.findPath('start', data, ['start'], paths, True)
+    logging.debug(f'visited {paths}')
+    return len(paths)
 
   def solve(self, puzzle_input=None):
     """Solve the puzzle for the given input"""
@@ -105,7 +103,7 @@ class Day12:
       puzzle_input = self.puzzle_input
     data = self.parse(puzzle_input)
     logging.debug(data)
-    solution1 = None #self.part1(data)[0]
+    solution1 = self.part1(data)[0]
     solution2 = self.part2(data)
 
     return solution1, solution2

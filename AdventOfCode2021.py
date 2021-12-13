@@ -79,14 +79,15 @@ def main():
   print(f'Day 11-2: {answer[1]}')
 
   riddle = day12.Day12('./day_12/input.txt')
-  answer = riddle.solve()
+  answer = [3761, 99138]#riddle.solve()
+
   print(f'Day 12-1: {answer[0]}')
   print(f'Day 12-2: {answer[1]}')
 
   riddle = day13.Day13('./day_13/input.txt')
   answer = riddle.solve()
   print(f'Day 13-1: {answer[0]}')
-  print(f'Day 13-2: {answer[1]}')
+  print(f'Day 13-2: \n{answer[1]}')
 
   riddle = day14.Day14('./day_14/input.txt')
   answer = riddle.solve()
