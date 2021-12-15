@@ -1,4 +1,4 @@
-# Day 14:
+# Day 14: Extended Polymerization
 
 ## Part 1
 
@@ -7,6 +7,8 @@
 https://adventofcode.com/2021/day/14
 
 ### Question
+
+Apply 10 steps of pair insertion to the polymer template and find the most and least common elements in the result. What do you get if you take the quantity of the most common element and subtract the quantity of the least common element?
 
 
 
