@@ -13,10 +13,10 @@ def example():
     puzzle_input = (PUZZLE_DIR / "example.txt").read_text().strip()
     return riddle.parse(puzzle_input)
 
-@pytest.mark.skip(reason="Not implemented")
 def test_parse_example(example):
     """Test that input is parsed properly"""
     assert example[0] == 'NNCB'
+    """
     assert example[1] == {
         'CH': 'B',
         'HH': 'N', 
@@ -35,58 +35,27 @@ def test_parse_example(example):
         'CC': 'N', 
         'CN': 'C'
     }
-
-@pytest.mark.skip(reason="Not implemented")
-def test_recursiveRules_1(example):
-    """Test applyRules on example input"""
-    rules = example[1]
-    input = {}
-    step1 = riddle.recursiveRules(0, 'NN', input, rules, 1)
-    assert step1 == {
-        'NN': {'value': 'N', 'left': 'NC', 'right': 'CN', 'count': [1]}
+    """
+    assert example[1] =={
+        ('C', 'H'): 'B', 
+        ('H', 'H'): 'N', 
+        ('C', 'B'): 'H', 
+        ('N', 'H'): 'C', 
+        ('H', 'B'): 'C', 
+        ('H', 'C'): 'B', 
+        ('H', 'N'): 'C', 
+        ('N', 'N'): 'C', 
+        ('B', 'H'): 'H', 
+        ('N', 'C'): 'B', 
+        ('N', 'B'): 'B', 
+        ('B', 'N'): 'B', 
+        ('B', 'B'): 'N', 
+        ('B', 'C'): 'B', 
+        ('C', 'C'): 'N', 
+        ('C', 'N'): 'C'
     }
 
-@pytest.mark.skip(reason="Not implemented")
-def test_recursiveRules_2(example):
-    rules = example[1]
-    input = {}
-    step2 = riddle.recursiveRules(0, 'NN', input, rules, 2)
-    assert step2 == {
-        'NN': {'value': 'N', 'left': 'NC', 'right': 'CN', 'count': [1]}, 
-        'NC': {'value': 'N', 'left': 'NB', 'right': 'BC', 'count': [0, 1]}, 
-        'CN': {'value': 'C', 'left': 'CC', 'right': 'CN', 'count': [0, 1]}, 
-    }
-
-@pytest.mark.skip(reason="Not implemented")
-def test_recursiveRules_3(example):
-    rules = example[1]
-    input = {}
-    step2 = riddle.recursiveRules(0, 'NN', input, rules, 3)
-    assert step2 == {
-        'NN': {'value': 'N', 'left': 'NC', 'right': 'CN', 'count': [1]}, 
-        'NC': {'value': 'N', 'left': 'NB', 'right': 'BC', 'count': [0, 1]}, 
-        'CN': {'value': 'C', 'left': 'CC', 'right': 'CN', 'count': [0, 1, 1]}, 
-        'NB': {'value': 'N', 'left': 'NB', 'right': 'BB', 'count': [0, 0, 1]}, 
-        'BC': {'value': 'B', 'left': 'BB', 'right': 'BC', 'count': [0, 0, 1]}, 
-        'CC': {'value': 'C', 'left': 'CN', 'right': 'NC', 'count': [0, 0, 1]}
-    }
-
-@pytest.mark.skip(reason="Not implemented")
-def test_recursiveRules_4(example):
-    rules = example[1]
-    input = {}
-    step2 = riddle.recursiveRules(0, 'NN', input, rules, 4)
-    assert step2 == {
-        'NN': {'value': 'N', 'left': 'NC', 'right': 'CN', 'count': [1]}, 
-        'NC': {'value': 'N', 'left': 'NB', 'right': 'BC', 'count': [0, 1, 1]}, 
-        'NB': {'value': 'N', 'left': 'NB', 'right': 'BB', 'count': [0, 0, 1, 1]}, 
-        'BB': {'value': 'B', 'left': 'BN', 'right': 'NB', 'count': [0, 0, 0, 2]}, 
-        'BC': {'value': 'B', 'left': 'BB', 'right': 'BC', 'count': [0, 0, 1, 1]}, 
-        'CN': {'value': 'C', 'left': 'CC', 'right': 'CN', 'count': [0, 1, 2, 1]}, 
-        'CC': {'value': 'C', 'left': 'CN', 'right': 'NC', 'count': [0, 0, 1, 1]}
-    }
-
-@pytest.mark.skip(reason="Not implemented")
+@pytest.mark.skip(reason="Refactored, not neccesary anymore")
 def test_applyRules(example):
     """Test applyRules on example input"""
     rules = example[1]
@@ -99,17 +68,12 @@ def test_applyRules(example):
     step4 = riddle.applyRules(step3, rules)
     assert step4 == 'NBBNBNBBCCNBCNCCNBBNBBNBBBNBBNBBCBHCBHHNHCBBCBHCB'
 
-@pytest.mark.skip(reason="Not implemented")
 def test_part1_example1(example):
     """Test part 1 on example input"""
     assert riddle.part1(example, 10) == 1588
     
-@pytest.mark.skip(reason="Not implemented")
 def test_part2_example1(example):
     """Test part 2 on example input"""
-    assert riddle.part2(example) == 2188189693529
+    assert riddle.part2(example, 40) == 2188189693529
 
-def test_part2_example1(example):
-    """Test part 2 on example input"""
-    assert riddle.part2_recursive(example,10) == 1588
     

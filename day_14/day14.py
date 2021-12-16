@@ -7,6 +7,9 @@ import sys
 import timeit
 import numpy as np
 
+from collections import Counter, defaultdict
+from itertools import pairwise
+
 class Day14:
   
   puzzle_input = None
@@ -27,20 +30,54 @@ class Day14:
     pairRules = {}
     for values in input_parts[1].split('\n'):
       value = values.split(' -> ')
-      pairRules[value[0]] = value[1]
+      pairRules[(value[0][0], value[0][1])] = value[1]
 
     logging.debug(f'PolimerInput: {polymer} ')
     logging.debug(f'Pair rules: {pairRules}')
 
     return polymer, pairRules    
 
+  def part1(self, data, steps=10):
+    """Solve part 1"""
+    return self.part2(data, steps)
 
+  def part2(self, data, steps=10):
+    pair_count = Counter(pairwise(data[0]))
+    logging.debug(f'{pair_count}')
+    polymer_count = defaultdict(lambda: 0, Counter(data[0]))
+    logging.debug(f'{polymer_count}')
+    rules = data[1]
 
+    for i in range(steps):
+      temp_pair_count: dict[tuple[str, str], int] = defaultdict(lambda: 0)
+      logging.debug(f'---')
+      for (a, b), count in pair_count.items():
+        x = rules[a, b]
+        polymer_count[x] += count
+        logging.debug(f'({a},{b}) <- {x} + {count}')
+        temp_pair_count[a, x] += count
+        temp_pair_count[x, b] += count
+        logging.debug(f'({a},{x}) + {count} | ({x},{b}) + {count}')
+      pair_count = temp_pair_count
+      logging.debug(f'pair_count: {pair_count}')
+      logging.debug(f'-- {polymer_count} --')
+
+    minVal = min(polymer_count.values())
+    maxVal = max(polymer_count.values())
+    solution = maxVal - minVal
+    logging.info(f'Answer: {solution}: min={minVal} max={maxVal}')
+
+    return solution
+
+  """
+  Different approaches, for Part 2, which didn't work as expected,
+  but leave it here for documentation
+
+  START
+  """
   def recursiveRules(self, iteration, key, input, rules, depth):
-
     if(iteration in (range(5))):
       print(f'iteration: {iteration} - key: {key}')
-
     if (not key in input):
       counter = [0] * (iteration+1)
       counter[iteration] += 1
@@ -73,7 +110,6 @@ class Day14:
 
     return input      
     
-
   def applyRules(self, inPolymer, rules):
     newPolymer = []
     for i in range(len(inPolymer)):
@@ -87,9 +123,7 @@ class Day14:
     logging.debug(f'{newPolymer}')
     return ''.join(newPolymer)
 
-
-
-  def part1(self, data, steps=10):
+  def part1_initial(self, data, steps=10):
     """Solve part 1"""
     inPolymer = data[0]
     rules = data[1]
@@ -102,7 +136,7 @@ class Day14:
       polymer = self.applyRules(polymer, rules)
       
       stop = timeit.default_timer()
-      print(f'{i}: {stop - start}')
+      logging.debug(f'{i}: {stop - start}')
 
     npPolymer = np.array(list(polymer))
     logging.debug(f'{npPolymer} ({npPolymer.shape})')
@@ -117,108 +151,9 @@ class Day14:
     logging.debug(f'min {minVal} - max {maxVal} - diff: {ret} - ({sums})')
 
     return ret
-
-  def part2_recursive(self, data, steps=20):
-    """Solve part 2"""
-    functionStart = timeit.default_timer()
-
-    steps += 1
-    input = data[0]
-    rules = data[1]
-
-    ret = {}
-    for i in range(len(input)-1):
-      start = timeit.default_timer()
-      val = input[i:i+2]
-      ret = self.recursiveRules(0, val, ret, rules, steps)
-
-      stop = timeit.default_timer()
-      print(f'{val}: {stop - start}')
-      
-    logging.debug(f'--- {ret}')
-    x = {input[-1]: 1}
-    for key in ret:
-      val = ret[key].get("value")
-      countArr = ret[key].get("count")
-      count = 0
-      if(len(countArr)>=steps):
-        count = countArr[steps-1]
-      logging.debug(f'{key}: {val} - {count}')
-
-      if (val in x):
-        x[val] += count
-      else:
-        x[val] = count
-
-    maxVal = max(x.values())
-    minVal = min(x.values())
-
-    functionStop = timeit.default_timer()
-
-    print(f'min: {minVal} - max: {maxVal} - {functionStop - functionStart} - ({x})')
-
-    return maxVal-minVal
-
-
-
-  def initDict(self, values):
-    ret = {}
-    for value in values:
-      ret[value] = {}
-
-    return ret
-
-
-
-  def part2(self, data, steps=10):
-    inPolymer = data[0]
-    rules = data[1]
-   
-    # Calculate all possible values and calculate for half of the needed steps
-    sums = self.initDict(rules.keys())
-    print(f'initDict: {sums}')
-
-    for keys in sums.keys():
-      input = keys
-      for i in range(int(steps/2)):
-        input = self.applyRules(input, rules)
-
-      npPolymer = np.array(list(input))
-      unique, counts = np.unique(npPolymer, return_counts=True)
-      calcSums = dict(zip(unique, counts))
-
-      sums[keys] = calcSums
-    print(f'{sums}')
-
-    # Now use the inputValues to get the String on Pos Array/2
-    polymer = inPolymer
-    for i in range(int(steps/2)):
-      polymer = self.applyRules(polymer, rules)
-    print(f'{polymer}')
-
-    solution = {}
-    # Calculate Sums with polymor on Postion Step/2 with calculated values 
-    for i in range(len(polymer)):
-      keyPoly = polymer[i:i+2]
-      print(f'keyPoly: {keyPoly}')
-      if(keyPoly in sums):
-        for key in sums[keyPoly].keys():
-          print(f'{key} : {sums[keyPoly][key]}')
-          #if(key != keyPoly[-1]):
-          if (key in solution):
-            solution[key] += sums[keyPoly][key]
-          else:
-            solution[key] = sums[keyPoly][key]
-
-    #solution[polymer[-1]] += 1
-    print(f'solution: {solution}')
-
-
-
-      #minVal = min(sums.values())
-      #maxVal = max(sums.values())
-      #ret = maxVal - minVal
-
+  """
+  END
+  """
 
   def solve(self, puzzle_input=None):
     """Solve the puzzle for the given input"""
@@ -226,11 +161,10 @@ class Day14:
       puzzle_input = self.puzzle_input
     data = self.parse(puzzle_input)
     logging.debug(data)
-    solution1 = self.part1(data)
-    solution2 = self.part2_recursive(data, 40)
+    solution1 = self.part1(data, 10)
+    solution2 = self.part2(data, 40)
 
     return solution1, solution2
-
 
 def main():
   logging.basicConfig(level=logging.INFO)
