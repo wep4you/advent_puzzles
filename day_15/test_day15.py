@@ -33,7 +33,6 @@ def test_part1_example1(example):
     """Test part 1 on example input"""
     assert riddle.part1(example) == 40
 
-@pytest.mark.skip(reason="Not implemented")
 def test_part2_example1(example):
     """Test part 2 on example input"""
-    assert riddle.part2(example) == ...
+    assert riddle.part2(example) == 315
